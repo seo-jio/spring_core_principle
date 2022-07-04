@@ -33,6 +33,7 @@ public class AllBeanTest {
         private final List<DiscountPolicy> policies;
 
         @Autowired
+        //DiscountPolicy 타입의 모든 빈들을 map과 리스트 형식으로 받아 옴
         public DiscountService(Map<String, DiscountPolicy> policyMap, List<DiscountPolicy> policies){
             this.policyMap = policyMap;
             this.policies = policies;
@@ -40,7 +41,7 @@ public class AllBeanTest {
         }
 
         public int discount(Member member, int price, String discountCode) {
-            DiscountPolicy discountPolicy = policyMap.get(discountCode);
+            DiscountPolicy discountPolicy = policyMap.get(discountCode);  //String으로 입력받은 값과 일치하는 이름을 갖는 빈을 불러옴
             return discountPolicy.discount(member, price);
         }
     }

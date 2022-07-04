@@ -20,9 +20,10 @@ public class BeanLifeCycleTest {
     static class lifeCycleConfig{
 
         @Bean
+        //@Bean(initMethod = "init",destroyMethod = "destroy") 초기화, 소멸 전 메소드를 사용자가 직접 지정
         public NetworkClient networkClient(){
-            NetworkClient networkClient = new NetworkClient();
-            networkClient.setUrl("http://hello-spring.dey");
+            NetworkClient networkClient = new NetworkClient(); //생성 과정
+            networkClient.setUrl("http://hello-spring.dev"); //초기화 과정
             return networkClient;
         }
     }

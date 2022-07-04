@@ -2,6 +2,7 @@ package hello.core.lifecycle;
 
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.context.annotation.Bean;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -29,13 +30,13 @@ public class NetworkClient{
         System.out.println("Disconnect: " + url);
     }
 
-    @PreDestroy
+    @PreDestroy  //객체 소멸 전 과정
     public void destroy() throws Exception {
         System.out.println("NetworkClient.destroy");
         disconnect();
     }
 
-    @PostConstruct
+    @PostConstruct //객체 생성 후 초기화 과정
     public void init() throws Exception {
         System.out.println("NetworkClient.afterPropertiesSet");
         connect();

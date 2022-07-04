@@ -30,8 +30,11 @@ public class SingletoneWithPrototype {
     static class ClientBean {
 //        private final PrototypeBean prototypeBean; //생성자 주입 시 사용
 
-        @Autowired
+        @Autowired  //java에서 제공하는 DL 기능만 제공하는 Provider 사용
         private Provider<PrototypeBean> prototypeBeanProvider;
+
+//        @Autowired //스프링에 의존적인 ObjectProvider 사용
+//        private ObjectProvider<PrototypeBean> prototypeBeanObjectProvider;
 
 //        생성자 주입시 사용
 //        @Autowired

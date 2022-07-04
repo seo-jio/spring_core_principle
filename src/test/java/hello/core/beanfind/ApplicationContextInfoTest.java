@@ -2,6 +2,7 @@ package hello.core.beanfind;
 
 
 import hello.core.AppConfig;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.ApplicationContext;
@@ -35,6 +36,20 @@ public class ApplicationContextInfoTest {
                 System.out.println("beanDefinitionName = " + beanDefinitionName + "Object" + bean);
             }
 
+        }
+    }
+
+    @Test
+    @DisplayName("Application Bean만 출력해보기")
+    void findApplicationBean(){
+        String[] beanDefinitionNames = ac.getBeanDefinitionNames();
+        for(String beanDefinitionName : beanDefinitionNames){
+            BeanDefinition beanDefinition = ac.getBeanDefinition(beanDefinitionName);
+            if (beanDefinition.getRole() == BeanDefinition.ROLE_APPLICATION){
+                Object bean = ac.getBean(beanDefinitionName);
+                System.out.println("beanDefinitionName = " + beanDefinitionName);
+                System.out.println("bean = " + bean);
+            }
         }
     }
 }
